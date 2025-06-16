@@ -6,6 +6,7 @@ import com.typewritermc.core.entries.Ref
 import com.typewritermc.core.extension.annotations.Entry
 import com.typewritermc.core.extension.annotations.EntryListener
 import com.typewritermc.core.extension.annotations.Help
+import com.typewritermc.core.interaction.context
 import com.typewritermc.engine.paper.entry.TriggerableEntry
 import com.typewritermc.engine.paper.entry.entries.EventEntry
 import com.typewritermc.engine.paper.entry.triggerAllFor
@@ -34,5 +35,5 @@ fun onPotBreakEvent(event: PotBreakEvent, query: Query<BreakPotEventEntry>) {
     val potId = event.potConfig().id()
     query.findWhere { entry ->
         entry.potIds.isEmpty() || entry.potIds.contains(potId)
-    }.triggerAllFor(breaker)
+    }.triggerAllFor(breaker, context())
 }

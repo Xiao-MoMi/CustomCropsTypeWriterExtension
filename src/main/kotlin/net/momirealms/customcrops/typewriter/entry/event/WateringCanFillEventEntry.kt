@@ -5,6 +5,7 @@ import com.typewritermc.core.entries.Query
 import com.typewritermc.core.entries.Ref
 import com.typewritermc.core.extension.annotations.Entry
 import com.typewritermc.core.extension.annotations.EntryListener
+import com.typewritermc.core.interaction.context
 import com.typewritermc.engine.paper.entry.TriggerableEntry
 import com.typewritermc.engine.paper.entry.entries.EventEntry
 import com.typewritermc.engine.paper.entry.triggerAllFor
@@ -27,5 +28,5 @@ class WateringCanFillEventEntry(
 fun onWateringCanFillEvent(event: WateringCanFillEvent, query: Query<WateringCanFillEventEntry>) {
     if (event.isCancelled) return
     val entries = query.find()
-    entries triggerAllFor event.player
+    entries.triggerAllFor(event.player, context())
 }

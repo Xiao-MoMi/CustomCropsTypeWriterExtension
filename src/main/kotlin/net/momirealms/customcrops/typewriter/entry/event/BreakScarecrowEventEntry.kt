@@ -5,6 +5,7 @@ import com.typewritermc.core.entries.Query
 import com.typewritermc.core.entries.Ref
 import com.typewritermc.core.extension.annotations.Entry
 import com.typewritermc.core.extension.annotations.EntryListener
+import com.typewritermc.core.interaction.context
 import com.typewritermc.engine.paper.entry.TriggerableEntry
 import com.typewritermc.engine.paper.entry.entries.EventEntry
 import com.typewritermc.engine.paper.entry.triggerAllFor
@@ -29,5 +30,5 @@ fun onScarecrowBreakEvent(event: ScarecrowBreakEvent, query: Query<BreakScarecro
     if (event.isCancelled) return
     val breaker = event.entityBreaker() as? Player ?: return
     val entries = query.find()
-    entries triggerAllFor breaker
+    entries.triggerAllFor(breaker, context())
 }

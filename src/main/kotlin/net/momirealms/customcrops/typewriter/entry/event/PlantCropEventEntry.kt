@@ -6,6 +6,7 @@ import com.typewritermc.core.entries.Ref
 import com.typewritermc.core.extension.annotations.Entry
 import com.typewritermc.core.extension.annotations.EntryListener
 import com.typewritermc.core.extension.annotations.Help
+import com.typewritermc.core.interaction.context
 import com.typewritermc.engine.paper.entry.TriggerableEntry
 import com.typewritermc.engine.paper.entry.entries.EventEntry
 import com.typewritermc.engine.paper.entry.triggerAllFor
@@ -32,5 +33,5 @@ fun onCropPlantEvent(event: CropPlantEvent, query: Query<PlantCropEventEntry>) {
     val cropId = event.cropConfig().id()
     query.findWhere { entry ->
         entry.cropIds.isEmpty() || entry.cropIds.contains(cropId)
-    }.triggerAllFor(event.player)
+    }.triggerAllFor(event.player, context())
 }

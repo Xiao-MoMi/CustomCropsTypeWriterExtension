@@ -1,5 +1,6 @@
 package net.momirealms.customcrops.typewriter.entry.event
 
+import com.typewritermc.core.interaction.context
 import com.typewritermc.core.books.pages.Colors
 import com.typewritermc.core.entries.Query
 import com.typewritermc.core.entries.Ref
@@ -34,5 +35,5 @@ fun onCropBreakEvent(event: CropBreakEvent, query: Query<BreakCropEventEntry>) {
     val cropId = event.cropConfig().id()
     query.findWhere { entry ->
         entry.cropIds.isEmpty() || entry.cropIds.contains(cropId)
-    }.triggerAllFor(breaker)
+    }.triggerAllFor(breaker, context())
 }

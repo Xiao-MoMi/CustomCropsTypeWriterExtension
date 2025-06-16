@@ -6,6 +6,7 @@ import com.typewritermc.core.entries.Ref
 import com.typewritermc.core.extension.annotations.Entry
 import com.typewritermc.core.extension.annotations.EntryListener
 import com.typewritermc.core.extension.annotations.Help
+import com.typewritermc.core.interaction.context
 import com.typewritermc.engine.paper.entry.TriggerableEntry
 import com.typewritermc.engine.paper.entry.entries.EventEntry
 import com.typewritermc.engine.paper.entry.triggerAllFor
@@ -34,5 +35,5 @@ fun onCropBreakEvent(event: CropBreakEvent, query: Query<BreakCropStageEventEntr
     val stageId = event.cropStageItemID()
     query.findWhere { entry ->
         entry.stageIds.isEmpty() || entry.stageIds.contains(stageId)
-    }.triggerAllFor(breaker)
+    }.triggerAllFor(breaker, context())
 }
